@@ -11,7 +11,7 @@ body, button, input {
 }
 
 body {
-  background-color: #282C33;
+  background: #121215;
   color: #EAEAEA;
 }
 
@@ -30,8 +30,10 @@ body {
 
 .container header h1 {
   background: linear-gradient(90deg, #4AC7FA 0%, #E649F5 100%);
-  -webkit-background-clip: text;
-  background-color: text;
+
+ -webkit-background-clip: text;
+  background-clip: text;
+
   -webkit-text-fill-color: transparent;
 }
 
@@ -45,10 +47,12 @@ header form input {
   padding: 16px;
   font-size: 16px;
   width: 100%;
+
   border-radius: 4px 0 0 4px;
   border: 1px solid transparent;
   border-right-width: 0;
-  transition: border-color 0.2s;
+
+  transition: border-color 200ms;
 }
 
 header form input:hover {
@@ -56,10 +60,13 @@ header form input:hover {
 }
 
 header form button {
+  width: 56px;
+
   background: #4AC7FA;
   border-radius: 0 4px 4px 0;
   line-height: 0;
-  transition: filter 0.2s;
+
+  transition: filter 200ms;
 }
 
 header form button:hover {
@@ -69,39 +76,144 @@ header form button:hover {
 .container main {
   margin-top: 32px;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  height: calc(100vh - 185px);
+  align-items: center;
+
+  height: calc(100vh - 149px);
 }
 
 main h2 {
-  background: linear-gradient(90deg, #4AC7FA 0%, #E649F5 100%);
+  text-transform: uppercase;
+  background-image: linear-gradient(90deg, #4AC7FA 0%, #E649F5 100%);
+
   -webkit-background-clip: text;
-  background-color: text;
+  background-clip: text;
+
   -webkit-text-fill-color: transparent;
 }
 
-main ul {
+.container main ul {
   list-style: none;
+
   margin-top: 32px;
   width: 100%;
+
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
 }
 
 main ul li {
-  background-color: #2F2F32;
+  background-color: #2f2f32;
   padding: 16px;
   border-radius: 4px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   border: 1px solid transparent;
-  transition: all 0.2s;
+
+  transition: all 200ms;
 }
 
 main ul li:hover {
   transform: translateY(-10px) scale(120%);
   border-color: #4AC7FA;
+}
+
+main ul li:hover span {
+  color: #95EBA8;
+}
+
+/* Modal */
+.swal2-container {
+  backdrop-filter: blur(8px);
+}
+
+.swal2-modal {
+  border-radius: 4px;
+  background-color: #2f2f32;
+  color: #EAEAEA;
+}
+
+.swal2-icon {
+  width: 64px;
+  height: 64px;
+
+  margin-top: 16px;
+}
+
+.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+  width: 1.9375em;
+
+  top: 47%;
+  transform: translateY(-50%);
+}
+
+.swal2-actions {
+  width: 100%;
+  max-width: 268px;
+}
+
+.swal2-actions button[type=button] {
+  width: 100%;
+  padding: 16px;
+  border-radius: 4px;
+  background: #4AC7FA;
+
+  transition: filter 200ms;
+}
+
+.swal2-actions button[type=button]:hover {
+  background-image: unset;
+  filter: brightness(90%);
+}
+
+.swal2-actions button[type=button]:focus {
+  box-shadow: unset;
+}
+
+/* Responsividade */
+@media(max-width: 900px) {
+  .container main ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media(max-width: 600px) {
+  .container header {
+    flex-direction: column;
+    justify-content: unset;
+    align-items: unset;
+
+    padding: 16px 0;
+  }
+
+  .container header h1 {
+    font-size: 24px;
+  }
+
+  .container header form {
+    margin-top: 16px;
+    max-width: unset;
+  }
+
+  main h2 {
+    font-size: 18px;
+  }
+
+  main ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  main ul li:hover {
+    transform: translateY(-4px) scale(110%);
+  }
+}
+
+@media(max-width: 400px) {
+  .container main ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
